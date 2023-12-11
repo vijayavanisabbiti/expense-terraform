@@ -4,5 +4,4 @@ tags = {
   company = "XYZ Co"
   bu_unit = "Finance"
   project_name = "expense"
-  Name = dev
 }
