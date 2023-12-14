@@ -27,3 +27,6 @@ backend = {
   instance_count = 1
   instance_type = "t3.micro"
 }
+
+bastion_cidrs = ["172.31.33.145"]
+

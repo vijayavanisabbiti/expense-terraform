@@ -15,4 +15,5 @@ variable "rds_engine" {}
 variable "rds_engine_version" {}
 variable "rds_instance_class" {}
 variable "backend" {}
+variable "bastion_cidrs" {}
 

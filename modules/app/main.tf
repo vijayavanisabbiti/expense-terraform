@@ -11,6 +11,14 @@ resource "aws_security_group" "main" {
     cidr_blocks = var.sg_cidrs
   }
 
+  ingress {
+    description = "SSH"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = var.bastion_cidrs
+  }
+
   egress {
     from_port        = 0
     to_port          = 0
@@ -48,5 +56,4 @@ resource "aws_autoscaling_group" "main" {
     value               = "${var.env}-${var.component}"
     propagate_at_launch = true
   }
-
 }
