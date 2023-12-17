@@ -63,7 +63,6 @@ module "public_alb" {
   sg_cidrs = ["0.0.0.0/0"]
   subnets = module.vpc.public_subnets
   tags = var.tags
-  target_group_arn = module.frontend.target_group_arn
   type = var.public_alb[type]
   vpc_id = module.vpc.vpc_id
 }
