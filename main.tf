@@ -58,11 +58,11 @@ module "frontend" {
 module "public_alb" {
   source = "./modules/alb"
   env    = var.env
-  internal = var.public_alb[internal]
-  lb_port = var.public_alb[lb_port]
+  internal = var.public_alb["internal"]
+  lb_port = var.public_alb["lb_port"]
   sg_cidrs = ["0.0.0.0/0"]
   subnets = module.vpc.public_subnets
   tags = var.tags
-  type = var.public_alb[type]
+  type = var.public_alb["type"]
   vpc_id = module.vpc.vpc_id
 }
