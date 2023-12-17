@@ -83,7 +83,7 @@ resource "aws_iam_role" "main" {
     ]
   })
 
-  inline policy {
+  inline_policy {
     name = "ssm_read_access"
 
     policy = jsonencode({
@@ -110,9 +110,4 @@ resource "aws_iam_role" "main" {
     })
   }
 
-}
-
-resource "aws_iam_instance_profile" "main" {
-  name = "${var.env}-${var.component}"
-  role = aws_iam_role.main.name
 }
