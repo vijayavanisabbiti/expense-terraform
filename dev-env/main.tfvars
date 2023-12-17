@@ -39,5 +39,5 @@ bastion_cidrs = ["172.31.33.145/32"]
 public_alb = {
   internal = false
   lb_port = 80
-  type = public
+  type = "public"
 }
