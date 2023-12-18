@@ -6,3 +6,4 @@ variable "lb_port" {}
 variable "sg_cidrs" {}
 variable "tags" {}
 variable "subnets" {}
+variable "target_group_arn" {}
