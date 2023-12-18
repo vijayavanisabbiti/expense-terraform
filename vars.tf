@@ -17,3 +17,4 @@ variable "rds_instance_class" {}
 variable "backend" {}
 variable "bastion_cidrs" {}
 variable "public_alb" {}
+variable "backend_alb" {}
