@@ -18,3 +18,4 @@ variable "backend" {}
 variable "bastion_cidrs" {}
 variable "public_alb" {}
 variable "backend_alb" {}
+variable "route53_zone_id" {}
