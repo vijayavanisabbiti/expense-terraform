@@ -75,6 +75,15 @@ resource "aws_lb_target_group" "main" {
   protocol = "HTTP"
   vpc_id   = var.vpc_id
 
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+    interval            = 5
+    matcher             = 200
+    path                = "/health"
+    timeout             = 2
+  }
 }
 
 resource "aws_iam_role" "main" {
