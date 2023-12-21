@@ -77,7 +77,6 @@ resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.main.arn
   port              = "80"
   protocol          = "HTTP"
-  overwrite         = true
 
   default_action {
     type = "redirect"
@@ -88,6 +87,7 @@ resource "aws_lb_listener" "http" {
       status_code = "HTTP_301"
     }
   }
+  overwrite         = true
 }
 
 resource "aws_route53_record" "main" {
