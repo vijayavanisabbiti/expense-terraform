@@ -23,9 +23,9 @@ rds_engine_version = "5.7.44"
 rds_instance_class = "db.t3.micro"
 
 backend = {
-  app_port = 8080
+  app_port       = 8080
   instance_count = 1
-  instance_type = "t3.micro"
+  instance_type  = "t3.micro"
 }
 
 frontend = {
@@ -37,10 +37,10 @@ frontend = {
 bastion_cidrs = ["172.31.33.145/32"]
 
 public_alb = {
-  internal = false
-  lb_port = 80
-  type = "public"
-  component = "frontend"
+  internal   = false
+  lb_port    = 80
+  type       = "public"
+  component  = "frontend"
   enable_https = true
 }
 
