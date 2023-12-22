@@ -131,7 +131,7 @@ resource "aws_iam_role" "main" {
             "ssm:GetParameter"
           ],
           "Resource": [
-            "arn:aws:ssm:us-east-1:469562195624:parameter/${var.env}.${var.component}.*",
+            "arn:aws:ssm:us-east-1:469562195624:parameter/${var.component}.${var.env}.*",
             "arn:aws:ssm:us-east-1:633788536644:parameter/${var.env}.rds.*",
             "arn:aws:ssm:us-east-1:633788536644:parameter/jenkins.*"
           ]
