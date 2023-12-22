@@ -73,6 +73,7 @@ resource "aws_lb_listener" "https" {
 
 
 resource "aws_lb_listener" "http" {
+  overwrite = true
   count             = var.enable_https ? 1 : 0
   load_balancer_arn = aws_lb.main.arn
   port              = "80"
