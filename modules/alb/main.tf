@@ -44,12 +44,6 @@ resource "aws_lb" "main" {
 
 }
 
-provider "aws" {
-  default_tags {
-    tags = merge(var.tags, { Name = "${var.env}-${var.type}.alb" })
-
-  }
-}
 
 resource "aws_lb_listener" "main" {
   count             = var.enable_https ? 1 : 0
@@ -93,6 +87,13 @@ resource "aws_lb_listener" "http" {
       protocol    = "HTTPS"
       status_code = "HTTP_301"
     }
+  }
+}
+
+provider "aws" {
+  default_tags {
+    tags = merge(var.tags, { Name = "${var.env}-${var.type}.alb" })
+
   }
 }
 
