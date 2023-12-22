@@ -73,6 +73,12 @@ resource "aws_lb_listener" "https" {
   }
 }
 
+provider "aws" {
+  default_tags {
+    tags = merge(var.tags, { Name = "${var.env}-${var.type}.alb" })
+  }
+}
+
 resource "aws_lb_listener" "http" {
   count             = var.enable_https ? 1 : 0
   load_balancer_arn = aws_lb.main.arn
@@ -90,12 +96,6 @@ resource "aws_lb_listener" "http" {
   }
 }
 
-provider "aws" {
-  default_tags {
-    tags = merge(var.tags, { Name = "${var.env}-${var.type}.alb" })
-
-  }
-}
 
 resource "aws_route53_record" "main" {
   name    = "${var.component}-${var.env}"
