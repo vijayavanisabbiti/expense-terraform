@@ -44,12 +44,6 @@ resource "aws_lb" "main" {
 
 }
 
-provider "aws" {
-  default_tags {
-    tags = merge(var.tags, { Name = "${var.env}-${var.type}.alb" })
-
-  }
-}
 
 resource "aws_lb_listener" "main" {
   count             = var.enable_https ? 1 : 0
@@ -76,6 +70,14 @@ resource "aws_lb_listener" "https" {
   default_action {
     type             = "forward"
     target_group_arn = var.target_group_arn
+  }
+}
+
+
+provider "aws" {
+  default_tags {
+    tags = merge(var.tags, { Name = "${var.env}-${var.type}.alb" })
+
   }
 }
 
