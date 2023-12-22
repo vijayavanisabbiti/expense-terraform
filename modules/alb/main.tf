@@ -87,7 +87,7 @@ resource "aws_lb_listener" "http" {
       status_code = "HTTP_301"
     }
   }
-  tags = merge(var.tags, { Name = "${var.env}-${var.type}.alb" })
+
 }
 
 resource "aws_route53_record" "main" {
