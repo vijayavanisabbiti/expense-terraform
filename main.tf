@@ -29,6 +29,7 @@ module "rds" {
 }
 
 module "backend" {
+  depends_on     = [module.backend-alb, module.public_alb, module.rds]
   source = "./modules/app"
   app_port       = var.backend["app_port"]
   component      = "backend"
@@ -44,6 +45,7 @@ module "backend" {
 }
 
 module "frontend" {
+  depends_on     = [module.backend-alb, module.public_alb]
   source = "./modules/app"
   app_port       = var.backend["app_port"]
   component      = "frontend"
