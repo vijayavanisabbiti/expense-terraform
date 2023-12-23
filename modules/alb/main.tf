@@ -19,7 +19,7 @@ resource "aws_security_group" "main" {
     ipv6_cidr_blocks = ["::/0"]
   }
 
-  tags = merge(var.tags, { Name = "${var.env}-${var.type}.alb" })
+  tags = merge(var.tags, { Name = "${var.env}-${var.type}-alb" })
 }
 
 
@@ -40,7 +40,7 @@ resource "aws_lb" "main" {
   load_balancer_type = "application"
   security_groups    = [aws_security_group.main.id]
   subnets            = var.subnets
-  tags = merge(var.tags, { Name = "${var.env}-${var.type}.alb" })
+  tags = merge(var.tags, { Name = "${var.env}-${var.type}-alb" })
 
 }
 
