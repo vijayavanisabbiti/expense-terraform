@@ -142,6 +142,18 @@ resource "aws_iam_role" "main" {
           "Effect": "Allow",
           "Action": "ssm:DescribeParameters",
           "Resource": "*"
+        },
+        {
+          "Sid": "VisualEditor0",
+          "Effect": "Allow",
+          "Action": [
+            "s3:PutObject",
+            "s3:GetObject",
+            "s3:DeleteObjectVersion",
+            "s3:ListBucket",
+            "s3:DeleteObject"
+          ],
+          "Resource": "*"
         }
       ]
     })
