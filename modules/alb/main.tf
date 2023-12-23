@@ -1,6 +1,6 @@
 resource "aws_security_group" "main" {
-  name        = "${var.env}-${var.type}-alb"
-  description = "${var.env}-${var.type}-alb"
+  name        = "${var.env}-${var.type}.alb"
+  description = "${var.env}-${var.type}.alb"
   vpc_id      = var.vpc_id
 
   ingress {
@@ -19,7 +19,7 @@ resource "aws_security_group" "main" {
     ipv6_cidr_blocks = ["::/0"]
   }
 
-  tags = merge(var.tags, { Name = "${var.env}-${var.type}-alb" })
+  tags = merge(var.tags, { Name = "${var.env}-${var.type}.alb" })
 }
 
 
@@ -46,7 +46,7 @@ resource "aws_lb" "main" {
 
 
 resource "aws_lb_listener" "main" {
-
+  count             = var.enable_https ? 1 : 0
   load_balancer_arn = aws_lb.main.arn
   port              = "80"
   protocol          = "HTTP"
