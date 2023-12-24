@@ -35,16 +35,16 @@ resource "aws_security_group" "main" {
 }
 
 resource "aws_db_instance" "main" {
-  allocated_storage    = var.rds_allocated_storage
-  db_name              = "mydb"
-  engine               = var.rds_engine
-  engine_version       = var.rds_engine_version
-  instance_class       = var.rds_instance_class
-  username             = data.aws_ssm_parameter.username.value
-  password             = data.aws_ssm_parameter.password.value
-  parameter_group_name = aws_db_parameter_group.main.name
-  skip_final_snapshot  = true
-  multi_az             = true
+  allocated_storage      = var.rds_allocated_storage
+  db_name                = "mydb"
+  engine                 = var.rds_engine
+  engine_version         = var.rds_engine_version
+  instance_class         = var.rds_instance_class
+  username               = data.aws_ssm_parameter.username.value
+  password               = data.aws_ssm_parameter.password.value
+  parameter_group_name   = aws_db_parameter_group.main.name
+  skip_final_snapshot    = true
+  multi_az               = true
   identifier             = "${var.env}-mysql-rds"
   storage_type           = "gp3"
   tags                   = merge(var.tags, { Name = "${var.env}-mysql-rds" })
@@ -53,5 +53,3 @@ resource "aws_db_instance" "main" {
   kms_key_id             = var.kms
   storage_encrypted      = true
 }
-
-
