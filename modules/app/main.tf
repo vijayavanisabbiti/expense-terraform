@@ -26,7 +26,6 @@ resource "aws_security_group" "main" {
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
-
   tags = merge(var.tags, { Name = "${var.env}-${var.component}" })
 }
 
@@ -66,7 +65,6 @@ resource "aws_autoscaling_group" "main" {
   min_size            = var.instance_count
   vpc_zone_identifier = var.subnets
   target_group_arns = [aws_lb_target_group.main.arn]
-
 
   launch_template {
     id      = aws_launch_template.main.id
@@ -158,7 +156,6 @@ resource "aws_iam_role" "main" {
       ]
     })
   }
-
 }
 
 resource "aws_iam_instance_profile" "main" {

@@ -41,7 +41,6 @@ resource "aws_lb" "main" {
   security_groups    = [aws_security_group.main.id]
   subnets            = var.subnets
   tags = merge(var.tags, { Name = "${var.env}-${var.type}-alb" })
-
 }
 
 
@@ -55,8 +54,8 @@ resource "aws_lb_listener" "main" {
     type             = "forward"
     target_group_arn = var.target_group_arn
   }
-
 }
+
 
 resource "aws_lb_listener" "https" {
   count             = var.enable_https ? 1 : 0
@@ -65,7 +64,6 @@ resource "aws_lb_listener" "https" {
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-2016-08"
   certificate_arn   = var.certificate_arn
-
 
   default_action {
     type             = "forward"
@@ -88,7 +86,6 @@ resource "aws_lb_listener" "http" {
       status_code = "HTTP_301"
     }
   }
-
 }
 
 resource "aws_route53_record" "main" {
