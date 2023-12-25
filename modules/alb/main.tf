@@ -35,7 +35,7 @@ resource "aws_security_group_rule" "https" {
 
 
 resource "aws_lb_listener" "main" {
-  count             = var.enable_https ? 1 : 0
+  count             = var.enable_https ? 0 : 1
   load_balancer_arn = aws_lb.main.arn
   port              = "80"
   protocol          = "HTTP"
