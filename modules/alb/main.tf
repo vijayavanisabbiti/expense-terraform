@@ -22,6 +22,14 @@ resource "aws_security_group" "main" {
   tags = merge(var.tags, { Name = "${var.env}-${var.type}-alb" })
 }
 
+resource "aws_lb" "main" {
+  name               = "${var.env}-${var.type}"
+  internal           = var.internal
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.main.id]
+  subnets            = var.subnets
+  tags = merge(var.tags, { Name = "${var.env}-${var.type}-alb" })
+}
 
 resource "aws_security_group_rule" "https" {
   count             = var.enable_https ? 1 : 0
@@ -32,7 +40,6 @@ resource "aws_security_group_rule" "https" {
   type              = "ingress"
   cidr_blocks       = var.sg_cidrs
 }
-
 
 resource "aws_lb_listener" "main" {
   count             = var.enable_https ? 0 : 1
@@ -77,17 +84,6 @@ resource "aws_lb_listener" "http" {
     }
   }
 }
-
-
-resource "aws_lb" "main" {
-  name               = "${var.env}-${var.type}"
-  internal           = var.internal
-  load_balancer_type = "application"
-  security_groups    = [aws_security_group.main.id]
-  subnets            = var.subnets
-  tags = merge(var.tags, { Name = "${var.env}-${var.type}-alb" })
-}
-
 
 resource "aws_route53_record" "main" {
   name    = "${var.component}-${var.env}"
