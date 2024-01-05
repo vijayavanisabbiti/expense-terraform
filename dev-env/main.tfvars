@@ -42,6 +42,10 @@ public_alb = {
   type       = "public"
   component  = "frontend"
   enable_https = true
+  ingress      = {
+    http = { port = 80}
+    https = { port = 443}
+  }
 }
 
 backend_alb = {
@@ -50,6 +54,9 @@ backend_alb = {
   type = "backend"
   component = "backend"
   enable_https = false
+  ingress      = {
+    http = { port = 80}
+  }
 }
 
 route53_zone_id = "Z01843807JDTGXSQ26S6"

@@ -75,6 +75,7 @@ module "public_alb" {
   route53_zone_id = var.route53_zone_id
   enable_https     = var.public_alb["enable_https"]
   certificate_arn  = var.certificate_arn
+  ingress          = var.public_alb["ingress"]
 }
 
 
@@ -93,4 +94,5 @@ module "backend-alb" {
   route53_zone_id = var.route53_zone_id
   enable_https     = var.backend_alb["enable_https"]
   certificate_arn  = var.certificate_arn
+  ingress          = var.backend_alb["ingress"]
 }
