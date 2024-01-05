@@ -132,7 +132,8 @@ resource "aws_iam_role" "main" {
             "arn:aws:ssm:us-east-1:469562195624:parameter/${var.env}.${var.component}.*",
             "arn:aws:ssm:us-east-1:469562195624:parameter/${var.env}.rds.*",
             "arn:aws:ssm:us-east-1:469562195624:parameter/jenkins.*",
-            "arn:aws:ssm:us-east-1:469562195624:parameter/${var.component}.${var.env}.*"
+            "arn:aws:ssm:us-east-1:469562195624:parameter/${var.component}.${var.env}.*",
+            "arn:aws:ssm:us-east-1:469562195624:parameter/artifactory.*"
           ]
         },
         {
