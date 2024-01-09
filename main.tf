@@ -61,18 +61,18 @@ module "frontend" {
 }
 
 module "public_alb" {
-  source = "./modules/alb"
-  env    = var.env
-  internal = var.public_alb["internal"]
-  lb_port = var.public_alb["lb_port"]
-  sg_cidrs = ["0.0.0.0/0"]
-  subnets = module.vpc.public_subnets
-  tags = var.tags
+  source           = "./modules/alb"
+  env              = var.env
+  internal         = var.public_alb["internal"]
+  lb_port          = var.public_alb["lb_port"]
+  sg_cidrs         = ["0.0.0.0/0"]
+  subnets          = module.vpc.public_subnets
+  tags             = var.tags
   target_group_arn = module.frontend.target_group_arn
-  type = var.public_alb["type"]
-  vpc_id = module.vpc.vpc_id
-  component = var.public_alb["component"]
-  route53_zone_id = var.route53_zone_id
+  type             = var.public_alb["type"]
+  vpc_id           = module.vpc.vpc_id
+  component        = var.public_alb["component"]
+  route53_zone_id  = var.route53_zone_id
   enable_https     = var.public_alb["enable_https"]
   certificate_arn  = var.certificate_arn
   ingress          = var.public_alb["ingress"]
