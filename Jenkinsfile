@@ -22,8 +22,8 @@ pipeline {
                     steps {
                         dir('DEV') {
                             git branch: 'main', url: 'https://github.com/vijayavanisabbiti/expense-terraform'
-                            sh 'terraform init -backend-config=env-dev/state.tfvars'
-                            sh 'terraform ${ACTION} -auto-approve -var-file=env-dev/main.tfvars'
+                            sh 'terraform init -backend-config=dev-env/state.tfvars'
+                            sh 'terraform ${ACTION} -auto-approve -var-file=dev-env/main.tfvars'
                         }
                     }
                 }
@@ -32,8 +32,8 @@ pipeline {
                     steps {
                         dir('PROD') {
                             git branch: 'main', url: 'https://github.com/vijayavanisabbiti/expense-terraform'
-                            sh 'terraform init -backend-config=env-prod/state.tfvars'
-                            sh 'terraform ${ACTION} -auto-approve -var-file=env-prod/main.tfvars'
+                            sh 'terraform init -backend-config=prod-env/state.tfvars'
+                            sh 'terraform ${ACTION} -auto-approve -var-file=prod-env/main.tfvars'
                         }
                     }
                 }
