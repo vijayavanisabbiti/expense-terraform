@@ -17,12 +17,12 @@ pipeline {
 
         stage('TF Action') {
             parallel {
-/*                stage('DEV Env') {
+                stage('DEV Env') {
                     steps {
                         sh 'terraform init -backend-config=dev-env/state.tfvars'
                         sh 'terraform ${ACTION} -auto-approve -var-file=dev-env/main.tfvars'
                     }
-                }*/
+                }
 
                 stage('PROD Env') {
                     steps {
