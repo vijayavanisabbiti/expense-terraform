@@ -31,12 +31,6 @@ pipeline {
                     }
                 }
             }
-
-
-/*            steps {
-                sh 'terraform init -backend-config=prod-env/state.tfvars'
-                sh 'terraform apply -auto-approve -var-file=prod-env/main.tfvars'
-            }*/
         }
     }
 
