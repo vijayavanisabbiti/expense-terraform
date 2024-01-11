@@ -10,7 +10,7 @@ pipeline {
     }
 
     parameters {
-        choice(name: 'ACTION', choices: ['Apply', 'Destroy'], description: 'Choose TF Action')
+        choice(name: 'ACTION', choices: ['apply', 'destroy'], description: 'Choose TF Action')
     }
 
     stages {
